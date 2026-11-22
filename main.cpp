@@ -3,7 +3,7 @@
 #include <fstream>
 using namespace std;
 
-const string FILENAME = "codes.text";
+const string FILENAME = "codes.txt";
 
 int main() {
     StringBinaryTree Tree;
@@ -37,38 +37,39 @@ int main() {
             case 'A':
                 cout << "what string would you like to add?\n";
                 cin >> element;
-                if (!searchNode(element)) {
+                if (!Tree.searchNode(element)) {
                     Tree.insertNode(element);
-                    cout << "string " << element " inserted!\n";
+                    cout << "string " << element << " inserted!\n";
                 } else {
-                    cout << element << " is already in the tree";
+                    cout << element << " is already in the tree\n";
                 }
             break;
             case 'D':
-                cout "what string would you like to delete?\n";
+                cout << "what string would you like to delete?\n";
                 cin >> element;
-                if (searchNode(element)) {
+                if (Tree.searchNode(element)) {
                     Tree.remove(element);
-                    cout << element << "successfully removed";
+                    cout << element << " successfully removed\n";
                 } else {
-                    cout << element 
+                    cout << element << " is not in the list, so it could not be deleted\n";
                 }
             break;
             case 'S':
-                cout << "what string would you like to search for?\n"
+                cout << "what string would you like to search for?\n";
                 cin >> element;
-                if (searchNode(element))
-                    cout << element << " is in the tree!";
+                if (Tree.searchNode(element))
+                    cout << element << " is in the tree!\n";
                 else {
-                    cout << element << " is not in the tree!";
+                    cout << element << " is not in the tree!\n";
                 }
             break;
             case 'O':
+                Tree.displayInOrder();
             break;
             default:
                 "invalid choice. try again";
         }
-        cout << MENU;
+        cout << endl << endl << MENU;
         cin >> choice;
     }
 
