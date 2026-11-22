@@ -1,18 +1,17 @@
 #include <iostream>
 #include "StringBinaryTree.h"
+#include <fstream>
 using namespace std;
 
 int main() {
-    StringBinaryTree newTree;
-    newTree.insertNode("meoww");
-    newTree.insertNode("kitty");
-    newTree.insertNode("cats");
-    newTree.displayInOrder();
+    StringBinaryTree Tree;
+    
+    ifstream in_file("codes.txt");
 
-    newTree.insertNode("horse!");
-    newTree.insertNode("horse 2: the sequel");
-    newTree.remove("meoww");
-    newTree.displayPreOrder();
+    if (!in_file.open()) {
+        cout << "error: codes.txt could not be opened\n";
+        return -1; 
+    }
 
     return 0;
 }
