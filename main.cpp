@@ -10,6 +10,7 @@ int main() {
     
     ifstream in_file(FILENAME);
 
+    // error checking for file
     if (!in_file.is_open()) {
         cout << "error: input file could not be opened\n";
         return -1; 
@@ -24,18 +25,45 @@ int main() {
     }
 
     cout << "BST created from " << FILENAME << endl;
-    const string MENU = "A - add element\nD - delete element\nS - Search\nE - exit program\nchoice: ";
+    const string MENU = "A - add element\nD - delete element\nS - Search\nO - inOrder display\nE - exit program\nchoice: ";
 
     cout << MENU;
     char choice;
     cin >> choice;
+    // loops until user decided to end the program
     while (choice != 'E') {
+        string element;
         switch(choice) {
             case 'A':
+                cout << "what string would you like to add?\n";
+                cin >> element;
+                if (!searchNode(element)) {
+                    Tree.insertNode(element);
+                    cout << "string " << element " inserted!\n";
+                } else {
+                    cout << element << " is already in the tree";
+                }
             break;
             case 'D':
+                cout "what string would you like to delete?\n";
+                cin >> element;
+                if (searchNode(element)) {
+                    Tree.remove(element);
+                    cout << element << "successfully removed";
+                } else {
+                    cout << element 
+                }
             break;
-            case 'S'
+            case 'S':
+                cout << "what string would you like to search for?\n"
+                cin >> element;
+                if (searchNode(element))
+                    cout << element << " is in the tree!";
+                else {
+                    cout << element << " is not in the tree!";
+                }
+            break;
+            case 'O':
             break;
             default:
                 "invalid choice. try again";
